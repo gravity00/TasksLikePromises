@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scr", "scr", "{E249DF3C-B515-44C2-A3DF-382E586046C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{7AE3CD8A-27A9-4F73-AE95-8653E88DE830}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+		tools\PromiseTplExtensions.PublicKey = tools\PromiseTplExtensions.PublicKey
+		tools\PromiseTplExtensions.snk = tools\PromiseTplExtensions.snk
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromiseTplExtensions", "src\PromiseTplExtensions\PromiseTplExtensions.csproj", "{75B157C7-4916-448A-AF0D-E404A4DE04ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75B157C7-4916-448A-AF0D-E404A4DE04ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B157C7-4916-448A-AF0D-E404A4DE04ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B157C7-4916-448A-AF0D-E404A4DE04ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B157C7-4916-448A-AF0D-E404A4DE04ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75B157C7-4916-448A-AF0D-E404A4DE04ED} = {E249DF3C-B515-44C2-A3DF-382E586046C8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E96F7D56-685C-4EFE-B42A-C30753669716}
+	EndGlobalSection
+EndGlobal
