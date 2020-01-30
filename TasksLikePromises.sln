@@ -8,11 +8,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{7AE3CD8A-27A9-4F73-AE95-8653E88DE830}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
-		tools\PromiseTplExtensions.PublicKey = tools\PromiseTplExtensions.PublicKey
-		tools\PromiseTplExtensions.snk = tools\PromiseTplExtensions.snk
+		tools\TasksLikePromises.PublicKey = tools\TasksLikePromises.PublicKey
+		tools\TasksLikePromises.snk = tools\TasksLikePromises.snk
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromiseTplExtensions", "src\PromiseTplExtensions\PromiseTplExtensions.csproj", "{75B157C7-4916-448A-AF0D-E404A4DE04ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksLikePromises", "src\TasksLikePromises\TasksLikePromises.csproj", "{75B157C7-4916-448A-AF0D-E404A4DE04ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

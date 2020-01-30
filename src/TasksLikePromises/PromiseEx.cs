@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace PromiseTplExtensions
+namespace TasksLikePromises
 {
     /// <summary>
     /// Extensions and helpers for <see cref="Task"/> instances.
@@ -68,7 +68,7 @@ namespace PromiseTplExtensions
         }
 
         // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
-        private static void NotNull<T>(this T instance, string paramName) where T : class
+        internal static void NotNull<T>(this T instance, string paramName) where T : class
         {
             if (instance == null) 
                 throw new ArgumentNullException(paramName);
