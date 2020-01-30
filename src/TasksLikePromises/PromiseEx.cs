@@ -6,7 +6,7 @@ namespace TasksLikePromises
     /// <summary>
     /// Extensions and helpers for <see cref="Task"/> instances.
     /// </summary>
-    public static partial class PromiseEx
+    public static class PromiseEx
     {
         /// <summary>
         /// Represents a task in the completed state
@@ -65,13 +65,6 @@ namespace TasksLikePromises
             var tcs = new TaskCompletionSource<T>();
             tcs.SetCanceled();
             return tcs.Task;
-        }
-
-        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
-        internal static void NotNull<T>(this T instance, string paramName) where T : class
-        {
-            if (instance == null) 
-                throw new ArgumentNullException(paramName);
         }
     }
 }
