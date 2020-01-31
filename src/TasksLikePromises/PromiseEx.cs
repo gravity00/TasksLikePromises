@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TasksLikePromises
@@ -35,25 +36,45 @@ namespace TasksLikePromises
         /// Creates a faulted task with the given exception as the reason
         /// </summary>
         /// <typeparam name="T">The result type</typeparam>
-        /// <param name="e">The exception to be used</param>
+        /// <param name="exception">The exception to be used</param>
         /// <returns>Faulted task holding the given exception</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static Task<T> FromException<T>(Exception e)
+        public static Task<T> FromException<T>(Exception exception)
         {
-            e.NotNull(nameof(e));
-
             var tcs = new TaskCompletionSource<T>();
-            tcs.SetException(e);
+            tcs.SetException(exception);
+            return tcs.Task;
+        }
+
+        /// <summary>
+        /// Creates a faulted task with the given exceptions as the reason
+        /// </summary>
+        /// <typeparam name="T">The result type</typeparam>
+        /// <param name="exceptions">The exceptions to be used</param>
+        /// <returns>Faulted task holding the given exception</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static Task<T> FromException<T>(IEnumerable<Exception> exceptions)
+        {
+            var tcs = new TaskCompletionSource<T>();
+            tcs.SetException(exceptions);
             return tcs.Task;
         }
 
         /// <summary>
         /// Creates a faulted task with the given exception as the reason
         /// </summary>
-        /// <param name="e">The exception to be used</param>
+        /// <param name="exception">The exception to be used</param>
         /// <returns>Faulted task holding the given exception</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static Task FromException(Exception e) => FromException<bool>(e);
+        public static Task FromException(Exception exception) => FromException<bool>(exception);
+
+        /// <summary>
+        /// Creates a faulted task with the given exceptions as the reason
+        /// </summary>
+        /// <param name="exceptions">The exceptions to be used</param>
+        /// <returns>Faulted task holding the given exception</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static Task FromException(IEnumerable<Exception> exceptions) => FromException<bool>(exceptions);
 
         /// <summary>
         /// Creates a canceled task
