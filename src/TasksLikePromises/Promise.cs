@@ -7,17 +7,17 @@ namespace TasksLikePromises
     /// <summary>
     /// Extensions and helpers for <see cref="Task"/> instances.
     /// </summary>
-    public static class PromiseEx
+    public static class Promise
     {
         /// <summary>
         /// Represents a task in the completed state
         /// </summary>
-        public static Task Completed { get; } = FromResult(true);
+        public static Task Resolved { get; } = Resolve(true);
 
         /// <summary>
         /// Represents a task in the canceled state
         /// </summary>
-        public static Task Canceled { get; } = FromCanceled<bool>();
+        public static Task Canceled { get; } = Cancel<bool>();
 
         /// <summary>
         /// Creates a completed task with the given value
@@ -25,7 +25,7 @@ namespace TasksLikePromises
         /// <typeparam name="T">The result type</typeparam>
         /// <param name="value">The value to be used</param>
         /// <returns>Completed task holding the given value</returns>
-        public static Task<T> FromResult<T>(T value)
+        public static Task<T> Resolve<T>(T value)
         {
             var tcs = new TaskCompletionSource<T>();
             tcs.SetResult(value);
@@ -39,7 +39,7 @@ namespace TasksLikePromises
         /// <param name="exception">The exception to be used</param>
         /// <returns>Faulted task holding the given exception</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static Task<T> FromException<T>(Exception exception)
+        public static Task<T> Reject<T>(Exception exception)
         {
             var tcs = new TaskCompletionSource<T>();
             tcs.SetException(exception);
@@ -53,7 +53,7 @@ namespace TasksLikePromises
         /// <param name="exceptions">The exceptions to be used</param>
         /// <returns>Faulted task holding the given exception</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static Task<T> FromException<T>(IEnumerable<Exception> exceptions)
+        public static Task<T> Reject<T>(IEnumerable<Exception> exceptions)
         {
             var tcs = new TaskCompletionSource<T>();
             tcs.SetException(exceptions);
@@ -66,7 +66,7 @@ namespace TasksLikePromises
         /// <param name="exception">The exception to be used</param>
         /// <returns>Faulted task holding the given exception</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static Task FromException(Exception exception) => FromException<bool>(exception);
+        public static Task Reject(Exception exception) => Reject<bool>(exception);
 
         /// <summary>
         /// Creates a faulted task with the given exceptions as the reason
@@ -74,14 +74,14 @@ namespace TasksLikePromises
         /// <param name="exceptions">The exceptions to be used</param>
         /// <returns>Faulted task holding the given exception</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static Task FromException(IEnumerable<Exception> exceptions) => FromException<bool>(exceptions);
+        public static Task Reject(IEnumerable<Exception> exceptions) => Reject<bool>(exceptions);
 
         /// <summary>
         /// Creates a canceled task
         /// </summary>
         /// <typeparam name="T">The result type</typeparam>
         /// <returns></returns>
-        public static Task<T> FromCanceled<T>()
+        public static Task<T> Cancel<T>()
         {
             var tcs = new TaskCompletionSource<T>();
             tcs.SetCanceled();

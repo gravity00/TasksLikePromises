@@ -15,9 +15,9 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException<TResult>(task.Exception.InnerExceptions);
+                    return Promise.Reject<TResult>(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.FromCanceled<TResult>();
+                    return Promise.Cancel<TResult>();
 
                 try
                 {
@@ -27,7 +27,7 @@ namespace System.Threading.Tasks
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException<TResult>(e);
+                    return Promise.Reject<TResult>(e);
                 }
             }
 
@@ -82,19 +82,19 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException<TResult>(task.Exception.InnerExceptions);
+                    return Promise.Reject<TResult>(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.FromCanceled<TResult>();
+                    return Promise.Cancel<TResult>();
 
                 try
                 {
-                    return PromiseEx.FromResult(onFulfilled(task.Result));
+                    return Promise.Resolve(onFulfilled(task.Result));
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException<TResult>(e);
+                    return Promise.Reject<TResult>(e);
                 }
             }
 
@@ -137,9 +137,9 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException(task.Exception.InnerExceptions);
+                    return Promise.Reject(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.Canceled;
+                    return Promise.Canceled;
 
                 try
                 {
@@ -149,7 +149,7 @@ namespace System.Threading.Tasks
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException(e);
+                    return Promise.Reject(e);
                 }
             }
 
@@ -204,20 +204,20 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException(task.Exception.InnerExceptions);
+                    return Promise.Reject(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.Canceled;
+                    return Promise.Canceled;
 
                 try
                 {
                     onFulfilled(task.Result);
-                    return PromiseEx.Completed;
+                    return Promise.Resolved;
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException(e);
+                    return Promise.Reject(e);
                 }
             }
 
@@ -261,9 +261,9 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException<TResult>(task.Exception.InnerExceptions);
+                    return Promise.Reject<TResult>(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.FromCanceled<TResult>();
+                    return Promise.Cancel<TResult>();
 
                 try
                 {
@@ -273,7 +273,7 @@ namespace System.Threading.Tasks
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException<TResult>(e);
+                    return Promise.Reject<TResult>(e);
                 }
             }
 
@@ -328,19 +328,19 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException<TResult>(task.Exception.InnerExceptions);
+                    return Promise.Reject<TResult>(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.FromCanceled<TResult>();
+                    return Promise.Cancel<TResult>();
 
                 try
                 {
-                    return PromiseEx.FromResult(onFulfilled());
+                    return Promise.Resolve(onFulfilled());
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException<TResult>(e);
+                    return Promise.Reject<TResult>(e);
                 }
             }
 
@@ -383,9 +383,9 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException(task.Exception.InnerExceptions);
+                    return Promise.Reject(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.Canceled;
+                    return Promise.Canceled;
 
                 try
                 {
@@ -395,7 +395,7 @@ namespace System.Threading.Tasks
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException(e);
+                    return Promise.Reject(e);
                 }
             }
 
@@ -450,20 +450,20 @@ namespace System.Threading.Tasks
             if (task.IsCompleted)
             {
                 if (task.Exception?.InnerException != null)
-                    return PromiseEx.FromException(task.Exception.InnerExceptions);
+                    return Promise.Reject(task.Exception.InnerExceptions);
                 if (task.IsCanceled)
-                    return PromiseEx.Canceled;
+                    return Promise.Canceled;
 
                 try
                 {
                     onFulfilled();
-                    return PromiseEx.Completed;
+                    return Promise.Resolved;
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
                 {
-                    return PromiseEx.FromException(e);
+                    return Promise.Reject(e);
                 }
             }
 
