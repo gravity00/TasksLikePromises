@@ -1,0 +1,36 @@
+<Project>
+
+  <PropertyGroup>
+    <Product>TasksLikePromises</Product>
+    <Company>Net.JoaoSimoes</Company>
+    <Copyright>Copyright © 2020 João Simões</Copyright>
+    <Authors>João Simões</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>../../tools/TasksLikePromises.snk</AssemblyOriginatorKeyFile>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <SignAssembly>true</SignAssembly>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/gravity00/TasksLikePromises</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/gravity00/TasksLikePromises/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/gravity00/TasksLikePromises</RepositoryUrl>
+    <GeneratePackageOnBuild Condition=" '$(BuildConfiguration)' == 'release' ">true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.20034</FileVersion>
+    <VersionPrefix>1.0.0-dev001</VersionPrefix>
+  </PropertyGroup>
+
+</Project>
