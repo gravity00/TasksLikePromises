@@ -498,26 +498,6 @@ namespace System.Threading.Tasks
 
             return tcs.Task;
         }
-
-        private static void SetFromCompleted<T>(this TaskCompletionSource<T> tcs, Task<T> task)
-        {
-            if (task.Exception?.InnerException != null)
-                tcs.SetException(task.Exception.InnerExceptions);
-            else if (task.IsCanceled)
-                tcs.SetCanceled();
-            else
-                tcs.SetResult(task.Result);
-        }
-
-        private static void SetFromCompleted(this TaskCompletionSource<bool> tcs, Task task)
-        {
-            if (task.Exception?.InnerException != null)
-                tcs.SetException(task.Exception.InnerExceptions);
-            else if (task.IsCanceled)
-                tcs.SetCanceled();
-            else
-                tcs.SetResult(true);
-        }
     }
 }
 
