@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TasksLikePromises
@@ -86,6 +87,34 @@ namespace TasksLikePromises
             var tcs = new TaskCompletionSource<T>();
             tcs.SetCanceled();
             return tcs.Task;
+        }
+
+        /// <summary>
+        /// Creates a task that will be completed after the given
+        /// milliseconds have passed.
+        /// </summary>
+        /// <param name="delay">The time to delay, in milliseconds</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static Task Timeout(int delay)
+        {
+            if (delay < 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(delay), delay, "Delay must be greater or equal to zero");
+            }
+
+#if NET40
+            var tcs = new TaskCompletionSource<bool>();
+
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            var timer = new Timer(_ => tcs.SetResult(true), null, delay, System.Threading.Timeout.Infinite);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+            return tcs.Task.Finally(() => timer.Dispose());
+#else
+            return Task.Delay(delay);
+#endif
         }
     }
 }
