@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>SocketTplExtensions</PackageId>
+    <PackageId>TasksLikePromises</PackageId>
     <TargetFrameworks>netstandard2.0;netstandard1.0;net4.5;net4.0</TargetFrameworks>
   </PropertyGroup>
 
