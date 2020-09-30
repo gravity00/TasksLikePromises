@@ -1,4 +1,4 @@
-# TasksLikePromises
+# TasksLikePromises - This was an Amazing Project
 
 Extensions for using C# Task Parallel Library (TPL) in a similar way to Javascript Promises (Then / Catch / Finally). This may be helpfull when developing applications that have .NET 4.0 as a requirement without using async/await keywords.
 
